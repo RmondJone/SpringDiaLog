@@ -30,13 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void showDialog() {
         SpringDiaLog diaLog = new SpringDiaLog(MainActivity.this,
-                LayoutInflater.from(this).inflate(R.layout.contentview, null), SpringDiaLog.ViewType.TEXT);
+                LayoutInflater.from(this).inflate(R.layout.contentview, null), SpringDiaLog.ViewType.IMG);
         diaLog.setContentView_Margin_Top(8)  //设置外边距
                 .setContentView_Margin_Bottom(8)
                 .setContentView_Margin_Left(8)
                 .setContentView_Margin_Right(8)
                 .setOverScreen(true) //设置是否全屏,覆盖状态栏
-                .setBackGroudImg(R.drawable.springdialog_backimg) //设置内容视图背景图片
                 .setCloseButtonImg(R.drawable.closebutton) //设置关闭按钮图片
                 .setCloseButtonListener(new View.OnClickListener() { //设置关闭按钮监听事件
                     @Override
