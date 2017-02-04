@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * 说明 显示普通公告弹框
+     * 作者 郭翰林
+     * 创建时间 2017/2/4 上午9:59
+     */
     private void showDialog() {
         SpringDiaLog diaLog = new SpringDiaLog(MainActivity.this,
                 LayoutInflater.from(this).inflate(R.layout.contentview, null), SpringDiaLog.ViewType.TEXT);
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 说明 显示公告弹框
+     * 说明 显示自定义视图公告弹框
      * 作者 郭翰林
      * 创建时间 2017/1/17 下午3:21
      */
