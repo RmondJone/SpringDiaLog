@@ -2,7 +2,7 @@
 自定义回弹公告栏，可以自定义内容视图。<br>
 ##效果展示
 
-![image](https://github.com/RmondJone/SpringDiaLog/blob/master/SpringDiaLog/app/src/main/res/drawable/ScreenRecord_2017-02-04-09-18-47.gif)
+![image](https://github.com/RmondJone/SpringDiaLog/blob/master/ScreenRecord_2017-02-04-09-18-47.gif)
 
 ##更新日志
 * 更新时间2017年02月04日09:56:17----------SpringDiaLog V1.0.0
@@ -69,7 +69,7 @@
             }
         });
     }
-    
+
     notice_layout.xml为自定义视图，具体的请下载Demo查看详细代码。
 ```
 ##目前支持可自定义属性
@@ -94,6 +94,3 @@
 * 联系方式：QQ(2318560278）
 * 技术交流群：QQ(264587303)
 * Demo作者：郭翰林
-    
-    
-    
