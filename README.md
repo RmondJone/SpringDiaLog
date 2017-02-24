@@ -2,7 +2,7 @@
 自定义回弹公告栏，可以自定义内容视图。<br>
 ##效果展示
 
-![image](https://github.com/RmondJone/SpringDiaLog/blob/master/ScreenRecord_2017-02-04-09-18-47.gif)
+![image](https://github.com/RmondJone/SpringDiaLog/blob/master/GIF.gif)
 
 ##更新日志
 * 更新时间2017年02月04日09:56:17----------SpringDiaLog V1.0.0
