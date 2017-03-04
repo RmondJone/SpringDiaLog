@@ -1,4 +1,4 @@
-package com.newland.springdialog.springdialog;
+package com.newland.springdialog;
 
 import android.content.Context;
 

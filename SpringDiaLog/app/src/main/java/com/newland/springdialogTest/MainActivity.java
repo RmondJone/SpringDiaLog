@@ -1,10 +1,8 @@
-package com.newland.springdialog;
+package com.newland.springdialogTest;
 
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.newland.springdialog.springdialog.SpringDiaLog;
+import com.newland.springdialog.SpringDiaLog;
 
 public class MainActivity extends AppCompatActivity {
     private Button mButton;

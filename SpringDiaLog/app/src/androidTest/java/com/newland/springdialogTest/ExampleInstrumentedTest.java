@@ -1,4 +1,4 @@
-package com.newland.springdialog;
+package com.newland.springdialogTest;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

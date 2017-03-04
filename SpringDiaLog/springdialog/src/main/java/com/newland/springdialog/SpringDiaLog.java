@@ -1,4 +1,4 @@
-package com.newland.springdialog.springdialog;
+package com.newland.springdialog;
 
 import android.app.Activity;
 import android.os.Handler;
@@ -11,8 +11,6 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
-import com.newland.springdialog.R;
 
 
 /**

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    tools:context="com.newland.springdialog.MainActivity">
+    tools:context="com.newland.springdialogTest.MainActivity">
 
     <Button
         android:id="@+id/showdialog"
