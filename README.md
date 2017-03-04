@@ -7,6 +7,25 @@
 ##更新日志
 * 更新时间2017年02月04日09:56:17----------SpringDiaLog V1.0.0
 
+##工程集成说明
+* 第一步
+```java
+allprojects {
+    repositories {
+        .......
+        maven { url 'https://jitpack.io' }
+        ......
+    }
+}
+```
+
+* 第二步
+```java
+  dependencies {
+		compile 'com.github.RmondJone:SpringDiaLog:1.0.0'
+	}
+```
+
 ##API使用说明
 
 ```java
