@@ -1,15 +1,16 @@
 # SpringDiaLog
 自定义回弹公告栏，可以自定义内容视图。<br>
-##效果展示
+## 效果展示
 
 ![image](https://github.com/RmondJone/SpringDiaLog/blob/master/GIF.gif)
 
-##更新日志
+## 更新日志
 * 更新时间2017年02月04日09:56:17----------SpringDiaLog V1.0.0
 
-##工程集成说明
+## 工程集成说明
 * 第一步
 ```java
+//在工程gradle文件里
 allprojects {
     repositories {
         .......
@@ -19,6 +20,14 @@ allprojects {
 }
 ```
 
+```java
+//如果不在工程gradle文件里加入，也可以加入模块gradle文件中
+repositories {
+    maven {
+        url  "https://jitpack.io"
+    }
+}
+```
 * 第二步
 ```java
   dependencies {
@@ -26,7 +35,7 @@ allprojects {
 	}
 ```
 
-##API使用说明
+## API使用说明
 
 ```java
     /**
@@ -91,7 +100,7 @@ allprojects {
 
     notice_layout.xml为自定义视图，具体的请下载Demo查看详细代码。
 ```
-##目前支持可自定义属性
+## 目前支持可自定义属性
 ```java
     private int mBackGroudImg = -1; //弹框背景图片
     private int mCloseButtonImg = -1;//关闭按钮资源
@@ -109,7 +118,7 @@ allprojects {
     private int mContentViewHeight = 350;//内容视图高度
 ```
 
-##问题反馈
+## 问题反馈
 * 联系方式：QQ(2318560278）
 * 技术交流群：QQ(264587303)
 * Demo作者：郭翰林
