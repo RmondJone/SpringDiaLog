@@ -12,7 +12,7 @@
         android:id="@+id/showdialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="显示文本弹框"
+        android:text="显示广告弹框"
         />
 
     <Button

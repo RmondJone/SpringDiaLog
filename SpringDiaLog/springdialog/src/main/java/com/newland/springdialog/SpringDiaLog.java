@@ -22,23 +22,11 @@ import android.widget.RelativeLayout;
 public class SpringDiaLog {
     private Activity mContext;
     private View mContentView; //弹框内容视图布局ID
-    private ViewType mViewType; //视图类型
-
-    public enum ViewType {
-        TEXT  //纯文本
-        , IMG  //单图片
-        , BLEND //图文混排
-    }
 
     private int mBackGroudImg = -1; //弹框背景图片
     private int mCloseButtonImg = -1;//关闭按钮资源
     private View.OnClickListener mCloseButtonListener;//关闭按钮点击事件
     private boolean isOverScreen = true;    // 是否覆盖全屏幕
-    private int mContentView_Margin_Left = 8;//内容视图左边距
-    private int mContentView_Margin_Top = 8;//内容视图上边距
-    private int mContentView_Margin_Right = 8;//内容视图右边距
-    private int mContentView_Margin_Bottom = 8;//内容视图底边距
-    private int mContentView_Margin = -1;//内容视图边距
     private boolean isShowCloseButton = true;//是否显示关闭按钮
     private boolean isCanceledOnTouchOutside = true; //是否点击外围触发关闭事件
     private int mStartAnimAngle = 270;//开始动画角度,0代表从右往左,逆时针算
@@ -60,16 +48,9 @@ public class SpringDiaLog {
     public SpringDiaLog(Activity mContext, View mContentView) {
         this.mContext = mContext;
         this.mContentView = mContentView;
-        this.mViewType = ViewType.BLEND;
         initView();
     }
 
-    public SpringDiaLog(Activity mContext, View mContentView, ViewType mViewType) {
-        this.mContext = mContext;
-        this.mContentView = mContentView;
-        this.mViewType = mViewType;
-        initView();
-    }
 
     /**
      * 说明 初始化控件
@@ -92,12 +73,6 @@ public class SpringDiaLog {
             mCloseButton.setImageDrawable(mContext.getResources().getDrawable(R.drawable.closebutton));
 
             mContainerView = (RelativeLayout) mRootView.findViewById(R.id.contentView);
-
-            if (mViewType != ViewType.TEXT) {
-                mContainerView.setBackground(mContext.getResources().getDrawable(R.drawable.dialog_backimg));
-            } else {
-                mContainerView.setBackground(mContext.getResources().getDrawable(R.drawable.springdialog_backimg));
-            }
 
             mAnimationView = (RelativeLayout) mRootView.findViewById(R.id.anim_container);
 
@@ -182,16 +157,7 @@ public class SpringDiaLog {
             mContainerView.setLayoutParams(layoutParams);
 
             //加入视图操作
-            FrameLayout.LayoutParams contentParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            if (mContentView_Margin != -1) {
-                contentParams.setMargins(mContentView_Margin, mContentView_Margin, mContentView_Margin, mContentView_Margin);
-            } else {
-                contentParams.setMargins(mContentView_Margin_Left, mContentView_Margin_Top, mContentView_Margin_Right, mContentView_Margin_Bottom);
-            }
-
-
-            mContentView_FrameLayout.addView(mContentView, contentParams);
-
+            mContentView_FrameLayout.addView(mContentView);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             androidContentView.addView(mRootView, params);
 
@@ -250,31 +216,6 @@ public class SpringDiaLog {
 
     public SpringDiaLog setOverScreen(boolean overScreen) {
         isOverScreen = overScreen;
-        return this;
-    }
-
-    public SpringDiaLog setContentView_Margin_Left(int mContentView_Margin_Left) {
-        this.mContentView_Margin_Left = mContentView_Margin_Left;
-        return this;
-    }
-
-    public SpringDiaLog setContentView_Margin_Top(int mContentView_Margin_Top) {
-        this.mContentView_Margin_Top = mContentView_Margin_Top;
-        return this;
-    }
-
-    public SpringDiaLog setContentView_Margin_Right(int mContentView_Margin_Right) {
-        this.mContentView_Margin_Right = mContentView_Margin_Right;
-        return this;
-    }
-
-    public SpringDiaLog setContentView_Margin_Bottom(int mContentView_Margin_Bottom) {
-        this.mContentView_Margin_Bottom = mContentView_Margin_Bottom;
-        return this;
-    }
-
-    public SpringDiaLog setContentView_Margin(int mContentView_Margin) {
-        this.mContentView_Margin = mContentView_Margin;
         return this;
     }
 

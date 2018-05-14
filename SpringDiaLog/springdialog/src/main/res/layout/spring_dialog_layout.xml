@@ -17,12 +17,10 @@
         >
 
         <RelativeLayout
-            android:background="@drawable/dialog_backimg"
             android:id="@+id/contentView"
             android:layout_width="280dp"
             android:layout_height="350dp">
             <FrameLayout
-                android:layout_margin="8dp"
                 android:id="@+id/fl_content_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
