@@ -28,6 +28,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.facebook.fresco:fresco:1.0.0'//Facebook 图片异步加载库
     compile 'com.squareup.okhttp3:okhttp:3.4.1' //OKHttp3 网络请求库
-    compile project(':springdialog')
-//    compile 'com.github.RmondJone:SpringDiaLog:1.0.0' //SpringDiaLog
+//    compile project(':springdialog')
+    compile 'com.github.RmondJone:SpringDiaLog:1.0.2' //SpringDiaLog
 }
