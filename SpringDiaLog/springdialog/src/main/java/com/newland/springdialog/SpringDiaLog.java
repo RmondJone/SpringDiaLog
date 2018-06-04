@@ -243,4 +243,24 @@ public class SpringDiaLog {
         this.mContentViewHeight = mContentViewHeight;
         return this;
     }
+
+    /**
+     * 作者：郭翰林
+     * 时间：2018/6/4 0004 13:50
+     * 注释：获取屏幕顶层视图
+     * @return
+     */
+    public ViewGroup getAndroidContentView() {
+        return androidContentView;
+    }
+
+    /**
+     * 作者：郭翰林
+     * 时间：2018/6/4 0004 13:51
+     * 注释：获取弹窗广告根视图
+     * @return
+     */
+    public View getRootView() {
+        return mRootView;
+    }
 }
