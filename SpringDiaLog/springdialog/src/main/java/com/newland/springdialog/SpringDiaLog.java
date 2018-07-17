@@ -43,6 +43,7 @@ public class SpringDiaLog {
     private boolean isShowing;//弹框是否显示
     private double heightY;
     private double widthX;
+    private boolean isUseAnimation = true;//是否使用动画
 
 
     public SpringDiaLog(Activity mContext, View mContentView) {
@@ -106,7 +107,6 @@ public class SpringDiaLog {
     public void show() {
         if (mRootView != null) {
             isShowing = true;
-
             if (isShowCloseButton) {
                 mCloseButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -114,22 +114,9 @@ public class SpringDiaLog {
                         if (mCloseButtonListener != null) {
                             mCloseButtonListener.onClick(view);
                         }
-                        AnimSpring.getInstance(mAnimationView).startTranslationAnim(0, 0, -widthX, -heightY);
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                androidContentView.removeView(mRootView);
-                            }
-                        }, 400);
-                    }
-                });
-            } else {
-                mCloseButton.setVisibility(View.GONE);
-                if (isCanceledOnTouchOutside) {
-                    mRootView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                        if (!isUseAnimation) {
+                            androidContentView.removeView(mRootView);
+                        } else {
                             AnimSpring.getInstance(mAnimationView).startTranslationAnim(0, 0, -widthX, -heightY);
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
@@ -138,6 +125,27 @@ public class SpringDiaLog {
                                     androidContentView.removeView(mRootView);
                                 }
                             }, 400);
+                        }
+                    }
+                });
+            } else {
+                mCloseButton.setVisibility(View.GONE);
+                if (isCanceledOnTouchOutside) {
+                    mRootView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (!isUseAnimation) {
+                                androidContentView.removeView(mRootView);
+                            } else {
+                                AnimSpring.getInstance(mAnimationView).startTranslationAnim(0, 0, -widthX, -heightY);
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        androidContentView.removeView(mRootView);
+                                    }
+                                }, 400);
+                            }
                         }
                     });
                 }
@@ -161,11 +169,13 @@ public class SpringDiaLog {
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             androidContentView.addView(mRootView, params);
 
-            //加入视图动画
-            double radius = Math.sqrt(DisplayUtil.screenhightPx * DisplayUtil.screenhightPx + DisplayUtil.screenWidthPx * DisplayUtil.screenWidthPx);
-            heightY = -Math.sin(Math.toRadians(mStartAnimAngle)) * radius;
-            widthX = Math.cos(Math.toRadians(mStartAnimAngle)) * radius;
-            AnimSpring.getInstance(mAnimationView).startTranslationAnim(widthX, heightY, 0, 0);
+            if (isUseAnimation) {
+                //加入视图动画
+                double radius = Math.sqrt(DisplayUtil.screenhightPx * DisplayUtil.screenhightPx + DisplayUtil.screenWidthPx * DisplayUtil.screenWidthPx);
+                heightY = -Math.sin(Math.toRadians(mStartAnimAngle)) * radius;
+                widthX = Math.cos(Math.toRadians(mStartAnimAngle)) * radius;
+                AnimSpring.getInstance(mAnimationView).startTranslationAnim(widthX, heightY, 0, 0);
+            }
         } else {
             Log.e("控件初始化失败", "LayoutInflater获取根视图失败！");
         }
@@ -178,14 +188,18 @@ public class SpringDiaLog {
      */
     public void close() {
         if (isShowing) {
-            AnimSpring.getInstance(mAnimationView).startTranslationAnim(0, 0, -widthX, -heightY);
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    androidContentView.removeView(mRootView);
-                }
-            }, 400);
+            if (!isUseAnimation) {
+                androidContentView.removeView(mRootView);
+            } else {
+                AnimSpring.getInstance(mAnimationView).startTranslationAnim(0, 0, -widthX, -heightY);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        androidContentView.removeView(mRootView);
+                    }
+                }, 400);
+            }
             isShowing = false;
         } else {
             Log.e("关闭失败", "弹框未显示！");
@@ -244,10 +258,16 @@ public class SpringDiaLog {
         return this;
     }
 
+    public SpringDiaLog setUseAnimation(boolean useAnimation) {
+        isUseAnimation = useAnimation;
+        return this;
+    }
+
     /**
      * 作者：郭翰林
      * 时间：2018/6/4 0004 13:50
      * 注释：获取屏幕顶层视图
+     *
      * @return
      */
     public ViewGroup getAndroidContentView() {
@@ -258,6 +278,7 @@ public class SpringDiaLog {
      * 作者：郭翰林
      * 时间：2018/6/4 0004 13:51
      * 注释：获取弹窗广告根视图
+     *
      * @return
      */
     public View getRootView() {

@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDraweeView imageView=(SimpleDraweeView) view.findViewById(R.id.advterImg);
         imageView.setImageURI("http://img.zcool.cn/community/01284e57a199450000018c1bfa91c8.jpg@1280w_1l_2o_100sh.webp");
         SpringDiaLog springDiaLog=new SpringDiaLog(this,view);
+        springDiaLog.setUseAnimation(false);
         springDiaLog.show();
     }
 

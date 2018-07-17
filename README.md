@@ -29,7 +29,7 @@ repositories {
 * 第二步
 ```java
   dependencies {
-		compile 'com.github.RmondJone:SpringDiaLog:1.0.2'
+		compile 'com.github.RmondJone:SpringDiaLog:1.0.5'
 	}
 ```
 
@@ -60,6 +60,7 @@ repositories {
     private int mStartAnimAngle = 270;//开始动画角度,0代表从右往左,逆时针算
     private int mContentViewWidth = 280;//内容视图宽度
     private int mContentViewHeight = 350;//内容视图高度
+    private boolean isUseAnimation = true;//是否使用动画，设置此属性则没有入场和出场动画效果
 ```
 
 ## 问题反馈

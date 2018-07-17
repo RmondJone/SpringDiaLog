@@ -27,7 +27,7 @@ public class AnimSpring {
         this.animView = animView;
     }
 
-    public static AnimSpring getInstance(View view){
+    public static synchronized AnimSpring getInstance(View view){
         animSpring=new AnimSpring(view);
         if (springSystem==null){
             springSystem=SpringSystem.create();
