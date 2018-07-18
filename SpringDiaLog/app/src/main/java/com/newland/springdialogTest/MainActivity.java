@@ -46,12 +46,17 @@ public class MainActivity extends AppCompatActivity {
      * 创建时间 2017/2/4 上午9:59
      */
     private void showDialog() {
-        View view=LayoutInflater.from(this).inflate(R.layout.contentview,null);
-        SimpleDraweeView imageView=(SimpleDraweeView) view.findViewById(R.id.advterImg);
+        View view = LayoutInflater.from(this).inflate(R.layout.contentview, null);
+        SimpleDraweeView imageView = (SimpleDraweeView) view.findViewById(R.id.advterImg);
         imageView.setImageURI("http://img.zcool.cn/community/01284e57a199450000018c1bfa91c8.jpg@1280w_1l_2o_100sh.webp");
-        SpringDiaLog springDiaLog=new SpringDiaLog(this,view);
-        springDiaLog.setUseAnimation(false);
-        springDiaLog.show();
+        SpringDiaLog springDiaLog = new SpringDiaLog(this, view);
+        springDiaLog.setShowCloseButton(true)//是否显示关闭按钮
+                .setCanceledOnTouchOutside(false)//触碰外围是否可关闭弹窗
+                .setContentViewWidth(280)//设置内容视图宽度
+                .setContentViewHeight(400)//设置内容视图高度
+                .setStartAnimAngle(0)//设置进场角度,0是3点钟方向从右往左，然后逆时针类推
+                .setUseAnimation(true)//是否使用进场动画
+                .show();
     }
 
     /**
