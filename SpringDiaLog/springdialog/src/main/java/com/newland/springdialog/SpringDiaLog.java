@@ -165,8 +165,10 @@ public class SpringDiaLog {
             mContainerView.setLayoutParams(layoutParams);
 
             //加入视图操作
+            mContentView_FrameLayout.removeAllViews();
             mContentView_FrameLayout.addView(mContentView);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            androidContentView.removeView(mRootView);
             androidContentView.addView(mRootView, params);
 
             if (isUseAnimation) {

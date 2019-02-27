@@ -1,15 +1,14 @@
 package com.newland.springdialogTest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.newland.springdialog.SpringDiaLog;
@@ -17,6 +16,8 @@ import com.newland.springdialog.SpringDiaLog;
 public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private Button mCustomButton;
+    private Button mSkipButton;
+    private SpringDiaLog springDiaLog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
                 showNoticMessage();
             }
         });
+
+        mSkipButton = (Button) findViewById(R.id.skipButton);
+        mSkipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                skipSecondActivity();
+            }
+        });
     }
 
 
@@ -49,14 +58,18 @@ public class MainActivity extends AppCompatActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.contentview, null);
         SimpleDraweeView imageView = (SimpleDraweeView) view.findViewById(R.id.advterImg);
         imageView.setImageURI("http://img.zcool.cn/community/01284e57a199450000018c1bfa91c8.jpg@1280w_1l_2o_100sh.webp");
-        SpringDiaLog springDiaLog = new SpringDiaLog(this, view);
-        springDiaLog.setShowCloseButton(true)//是否显示关闭按钮
-                .setCanceledOnTouchOutside(false)//触碰外围是否可关闭弹窗
-                .setContentViewWidth(280)//设置内容视图宽度
-                .setContentViewHeight(400)//设置内容视图高度
-                .setStartAnimAngle(0)//设置进场角度,0是3点钟方向从右往左，然后逆时针类推
-                .setUseAnimation(true)//是否使用进场动画
-                .show();
+        if (springDiaLog == null) {
+            springDiaLog = new SpringDiaLog(this, view);
+            springDiaLog.setShowCloseButton(true)//是否显示关闭按钮
+                    .setCanceledOnTouchOutside(false)//触碰外围是否可关闭弹窗
+                    .setContentViewWidth(280)//设置内容视图宽度
+                    .setContentViewHeight(400)//设置内容视图高度
+                    .setStartAnimAngle(0)//设置进场角度,0是3点钟方向从右往左，然后逆时针类推
+                    .setUseAnimation(true)//是否使用进场动画
+                    .show();
+        } else {
+            springDiaLog.show();
+        }
     }
 
     /**
@@ -92,5 +105,14 @@ public class MainActivity extends AppCompatActivity {
                 diaLog.close();
             }
         });
+    }
+
+    /**
+     * 注释：跳转第二个页面
+     * 时间：2019/2/27 0027 16:53
+     * 作者：郭翰林
+     */
+    private void skipSecondActivity() {
+        startActivity(new Intent(this, SecondActivity.class));
     }
 }
